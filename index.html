@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="toggle()">Toggle</button>
+  <div id="window" class="visible focused">
+    <header id="header">
+      <div class="title">
+        <img src="assets/clock.png" alt="clock">
+        <span>20% 완료</span>
+      </div>
+      <div class="controls">
+        <button><img src="assets/minimize.svg" alt="minimize"></button>
+        <button disabled><img src="assets/maximize.svg" alt="maximize"></button>
+        <button><img src="assets/close.svg" alt="close"></button>
+      </div>
+    </header>
+  </div>
+</body>
+</html>
