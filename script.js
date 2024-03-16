@@ -2,6 +2,7 @@ const win = document.getElementById('window');
 const header = document.getElementById('header');
 const headerTitle = document.getElementById('header-title');
 const textPercentage = document.getElementById('text-percentage');
+const progressBar = document.getElementById('progress-bar');
 
 let pos = [0, 0, 0, 0];
 let visible = true;
@@ -17,13 +18,23 @@ let innerFocus = true;
   toYear.textContent = `${yearThen}년`;
   toYear.href = `https://namu.wiki/w/${yearThen}%EB%85%84`;
 
+  updateProgress();
+  setInterval(updateProgress,1000);
+})();
+
+function updateProgress(){
+  let yearNow = new Date().getFullYear();
+  let yearThen = yearNow + 1;
+
   let diff = getStartOf(yearThen) - getStartOf(yearNow);
   let current = Date.now() - getStartOf(yearNow);
-  let percentage = Math.floor(current / diff * 100);
+  let rawPercentage = current / diff * 100;
+  let percentage = Math.floor(rawPercentage);
 
+  progressBar.style.setProperty('--percentage', `${rawPercentage}%`);
   headerTitle.textContent = `${percentage}% 완료`;
   textPercentage.textContent = `${percentage}% 완료`;
-})();
+}
 
 function getStartOf(year) {
   let date = new Date();
