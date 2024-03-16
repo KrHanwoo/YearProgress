@@ -1,16 +1,20 @@
-const win = document.getElementById('window');
-const header = document.getElementById('header');
-const headerTitle = document.getElementById('header-title');
-const textPercentage = document.getElementById('text-percentage');
-const progressBar = document.getElementById('progress-bar');
+const $ = (id) => document.getElementById(id);
+
+const win = $('window');
+const header = $('header');
+const headerTitle = $('header-title');
+const textPercentage = $('text-percentage');
+const progressBar = $('progress-bar');
 
 let pos = [0, 0, 0, 0];
 let visible = false;
 let innerFocus = false;
+let initial = true;
+let rawPercentage;
 
 (async () => {
-  let fromYear = document.getElementById('from-year');
-  let toYear = document.getElementById('to-year');
+  let fromYear = $('from-year');
+  let toYear = $('to-year');
   let yearNow = new Date().getFullYear();
   let yearThen = yearNow + 1;
   fromYear.textContent = `${yearNow}년`;
@@ -38,12 +42,17 @@ function updateProgress() {
 
   let diff = endTime - startTime;
   let current = Date.now() - startTime;
-  let rawPercentage = current / diff * 100;
+  rawPercentage = current / diff * 100;
   let percentage = Math.floor(rawPercentage);
 
-  progressBar.style.setProperty('--percentage', `${rawPercentage}%`);
+  setCssPercentage();
   headerTitle.textContent = `${percentage}% 완료`;
   textPercentage.textContent = `${percentage}% 완료`;
+}
+
+function setCssPercentage() {
+  if (initial) return;
+  progressBar.style.setProperty('--percentage', `${rawPercentage}%`);
 }
 
 function getStartOf(year) {
@@ -59,6 +68,8 @@ function openWin() {
   innerFocus = true;
   win.classList.toggle('visible', visible);
   setFocus(true);
+  initial = false;
+  setCssPercentage();
 }
 
 function closeWin() {
