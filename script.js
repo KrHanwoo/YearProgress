@@ -5,8 +5,8 @@ const textPercentage = document.getElementById('text-percentage');
 const progressBar = document.getElementById('progress-bar');
 
 let pos = [0, 0, 0, 0];
-let visible = true;
-let innerFocus = true;
+let visible = false;
+let innerFocus = false;
 
 (async () => {
   let fromYear = document.getElementById('from-year');
@@ -18,16 +18,26 @@ let innerFocus = true;
   toYear.textContent = `${yearThen}년`;
   toYear.href = `https://namu.wiki/w/${yearThen}%EB%85%84`;
 
+  let inWidth = window.innerWidth;
+  let inHeight = window.innerHeight;
+  let width = win.offsetWidth;
+  let height = win.offsetHeight;
+  win.style.left = `${(inWidth - width) / 2}px`;
+  win.style.top = `${(inHeight - height) / 2}px`;
+
   updateProgress();
-  setInterval(updateProgress,1000);
+  setInterval(updateProgress, 1000);
 })();
 
-function updateProgress(){
+function updateProgress() {
   let yearNow = new Date().getFullYear();
   let yearThen = yearNow + 1;
 
-  let diff = getStartOf(yearThen) - getStartOf(yearNow);
-  let current = Date.now() - getStartOf(yearNow);
+  let startTime = getStartOf(yearNow);
+  let endTime = getStartOf(yearThen);
+
+  let diff = endTime - startTime;
+  let current = Date.now() - startTime;
   let rawPercentage = current / diff * 100;
   let percentage = Math.floor(rawPercentage);
 
@@ -44,8 +54,16 @@ function getStartOf(year) {
   return date.getTime();
 }
 
-function toggle() {
-  visible = !visible;
+function openWin() {
+  visible = true;
+  innerFocus = true;
+  win.classList.toggle('visible', visible);
+  setFocus(true);
+}
+
+function closeWin() {
+  visible = false;
+  innerFocus = false;
   win.classList.toggle('visible', visible);
 }
 
@@ -55,19 +73,32 @@ win.oncontextmenu = (e) => {
 
 document.onmousedown = (e) => {
   innerFocus = win.contains(e.target);
-  win.classList.toggle('focused', innerFocus);
+  setFocus(innerFocus);
 };
 
 window.onfocus = () => {
   win.classList.toggle('focused', innerFocus);
+  setFocus(innerFocus);
 };
 
 window.onblur = () => {
   win.classList.toggle('focused', false);
+  setFocus(false);
 };
 
+function setFocus(flag) {
+  win.classList.toggle('focused', flag);
+  Array.from(document.getElementsByClassName('unfocusable')).forEach(x => {
+    x.classList.toggle('unfocused', !flag);
+  });
+}
+
 header.onmousedown = (e) => {
+  let tag = e.target.tagName;
+  if (tag == 'BUTTON' || tag == 'IMG') return;
   e.preventDefault();
+  pos[0] = win.offsetLeft;
+  pos[1] = win.offsetTop;
   pos[2] = e.clientX;
   pos[3] = e.clientY;
   document.onmouseup = () => {
@@ -76,11 +107,16 @@ header.onmousedown = (e) => {
   };
   document.onmousemove = (e) => {
     e.preventDefault();
-    pos[0] = pos[2] - e.clientX;
-    pos[1] = pos[3] - e.clientY;
-    pos[2] = e.clientX;
-    pos[3] = e.clientY;
-    win.style.left = `${win.offsetLeft - pos[0]}px`;
-    win.style.top = `${win.offsetTop - pos[1]}px`;
+    let width = win.offsetWidth;
+    let height = win.offsetHeight;
+
+    let left = pos[0] + e.clientX - pos[2];
+    let top = pos[1] + e.clientY - pos[3];
+
+    left = Math.max(0, Math.min(left, window.innerWidth - width));
+    top = Math.max(0, Math.min(top, window.innerHeight - height - 1));
+
+    win.style.left = `${left}px`;
+    win.style.top = `${top}px`;
   };
 };

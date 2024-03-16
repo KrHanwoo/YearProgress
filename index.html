@@ -4,21 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
   <script src="script.js" defer></script>
-  <title>Document</title>
+  <title>시간은 흐르고</title>
+  <style>
+    body{
+      background-color: #010916;
+    }
+  </style>
 </head>
 <body>
-  <button onclick="toggle()">Toggle</button>
-  <div id="window" class="visible focused">
+  <div class="center">
+    <button class="btn" onclick="openWin()">
+      <img src="assets/clock.png" alt="clock" draggable="false">
+    </button>
+  </div>
+  <div id="window">
     <header id="header">
       <div class="title">
-        <img src="assets/clock.png" alt="clock">
-        <span id="header-title">20% 완료</span>
+        <img src="assets/clock.png" alt="clock" draggable="false">
+        <span class="unfocusable" id="header-title"></span>
       </div>
       <div class="controls">
-        <button><img src="assets/minimize.svg" alt="minimize"></button>
-        <button disabled><img src="assets/maximize.svg" alt="maximize"></button>
-        <button><img src="assets/close.svg" alt="close"></button>
+        <button><img class="unfocusable" src="assets/minimize.svg" alt="minimize" draggable="false"></button>
+        <button disabled><img class="unfocusable" src="assets/maximize.svg" alt="maximize" draggable="false"></button>
+        <button onclick="closeWin()"><img class="unfocusable" src="assets/close.svg" alt="close" draggable="false"></button>
       </div>
     </header>
     <div class="container">
@@ -28,15 +38,19 @@
       </span>
       <div class="progress-text">
         <span id="text-percentage"></span>
+        <div>
+          <img src="assets/pause.svg" alt="pause" draggable="false">
+          <img src="assets/cancel.svg" alt="cancel" draggable="false">
+        </div>
       </div>
       <div id="progress-bar">
         <div class="progress-bar-green">
-          <img class="progress-bar-shine" src="assets/shine.svg" alt="shine">
+          <img class="progress-bar-shine" src="assets/shine.svg" alt="shine" draggable="false">
         </div>
       </div>
     </div>
     <div class="container additional">
-      <img src="assets/details.svg" alt="details">
+      <img src="assets/details.svg" alt="details" draggable="false">
       <span>자세히</span>
     </div>
   </div>
