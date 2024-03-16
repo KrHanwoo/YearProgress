@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30"
+   height="30"
+   viewBox="0 0 7.9374998 7.9374999"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="details.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="32"
+     inkscape:cx="15.84375"
+     inkscape:cy="12.734375"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1" />
+  <g
+     id="g1"
+     transform="translate(0.02957177,-0.03967391)">
+    <g
+       id="layer1"
+       style="stroke:none;stroke-width:0.121731;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       transform="matrix(-0.39509554,-0.39509554,0.43769911,-0.43769911,3.2007849,7.3135776)">
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.121731;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         id="rect1"
+         width="3.175"
+         height="0.26458332"
+         x="2.3812499"
+         y="3.8364584"
+         ry="0" />
+    </g>
+    <g
+       id="layer1-8"
+       style="stroke:none;stroke-width:0.121731;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       transform="matrix(0.39509554,-0.39509554,-0.43769911,-0.43769911,4.6775714,7.3135776)">
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.121731;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         id="rect1-6"
+         width="3.175"
+         height="0.26458332"
+         x="2.3812499"
+         y="3.8364584"
+         ry="0" />
+    </g>
+  </g>
+</svg>

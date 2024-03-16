@@ -13,7 +13,7 @@
     <header id="header">
       <div class="title">
         <img src="assets/clock.png" alt="clock">
-        <span>20% 완료</span>
+        <span id="header-title">20% 완료</span>
       </div>
       <div class="controls">
         <button><img src="assets/minimize.svg" alt="minimize"></button>
@@ -21,6 +21,22 @@
         <button><img src="assets/close.svg" alt="close"></button>
       </div>
     </header>
+    <div class="container">
+      <span class="info-text">
+        <a class="clean-link" id="from-year" target="_blank"></a>에서
+        <a class="clean-link" id="to-year" target="_blank"></a>(으)로 ∞개 항목 이동 중
+      </span>
+      <div class="progress-text">
+        <span id="text-percentage"></span>
+      </div>
+      <div id="progress-bar">
+
+      </div>
+    </div>
+    <div class="container additional">
+      <img src="assets/details.svg" alt="details">
+      <span>자세히</span>
+    </div>
   </div>
 </body>
 </html>
