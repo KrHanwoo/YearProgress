@@ -113,8 +113,8 @@ let evtDrag = (e) => {
   e.preventDefault();
   pos[0] = win.offsetLeft;
   pos[1] = win.offsetTop;
-  pos[2] = e.clientX;
-  pos[3] = e.clientY;
+  pos[2] = e.clientX || e.touches[0].clientX;
+  pos[3] = e.clientY || e.touches[0].clientY;
   let evtCancel = () => {
     document.onmouseup = null;
     document.onmousemove = null;
@@ -128,8 +128,8 @@ let evtDrag = (e) => {
     let width = win.offsetWidth;
     let height = win.offsetHeight;
 
-    let left = pos[0] + e.clientX - pos[2];
-    let top = pos[1] + e.clientY - pos[3];
+    let left = pos[0] + (e.clientX || e.touches[0].clientX) - pos[2];
+    let top = pos[1] + (e.clientY || e.touches[0].clientY) - pos[3];
 
     left = Math.max(0, Math.min(left, window.innerWidth - width));
     top = Math.max(0, Math.min(top, window.innerHeight - height - 1));
