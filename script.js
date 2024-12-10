@@ -82,10 +82,13 @@ win.oncontextmenu = (e) => {
   e.preventDefault();
 };
 
-document.onmousedown = (e) => {
+let evtFocus = (e) => {
   innerFocus = win.contains(e.target);
   setFocus(innerFocus);
 };
+
+document.onmousedown = evtFocus;
+document.ontouchstart = evtFocus;
 
 window.onfocus = () => {
   win.classList.toggle('focused', innerFocus);
@@ -104,7 +107,7 @@ function setFocus(flag) {
   });
 }
 
-header.onmousedown = (e) => {
+let evtDrag = (e) => {
   let tag = e.target.tagName;
   if (tag == 'BUTTON' || tag == 'IMG') return;
   e.preventDefault();
@@ -116,7 +119,7 @@ header.onmousedown = (e) => {
     document.onmouseup = null;
     document.onmousemove = null;
   };
-  document.onmousemove = (e) => {
+  let evtMove = (e) => {
     e.preventDefault();
     let width = win.offsetWidth;
     let height = win.offsetHeight;
@@ -130,4 +133,10 @@ header.onmousedown = (e) => {
     win.style.left = `${left}px`;
     win.style.top = `${top}px`;
   };
+  document.onmousemove = evtMove;
+  document.ontouchmove = evtMove;
+  
 };
+
+header.onmousedown = evtDrag;
+header.ontouchstart = evtDrag;
