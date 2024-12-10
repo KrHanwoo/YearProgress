@@ -115,10 +115,14 @@ let evtDrag = (e) => {
   pos[1] = win.offsetTop;
   pos[2] = e.clientX;
   pos[3] = e.clientY;
-  document.onmouseup = () => {
+  let evtCancel = () => {
     document.onmouseup = null;
     document.onmousemove = null;
+    document.ontouchend = null;
+    document.ontouchmove = null;
   };
+  document.onmouseup = evtCancel;
+  document.ontouchend = evtCancel;
   let evtMove = (e) => {
     e.preventDefault();
     let width = win.offsetWidth;
